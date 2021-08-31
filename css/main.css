@@ -24,6 +24,10 @@ ul {
 
 body {
   font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: normal;
+  color: #000;
 }
 
 /* 공통 클래스 */
@@ -48,6 +52,282 @@ body {
 }
 
 .wrap {
+  position: relative;
+  display: block;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 82px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 999999;
+}
+
+.header--scrolled {
+  position: fixed;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  animation-name: ani-header;
+  animation-duration: 0.5s;
+}
+
+@keyframes ani-header {
+  0% {
+    margin-top: -80px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+
+.header__logo {
+  position: absolute;
+  left: 16px;
+  top: 27px;
+  display: block;
+  width: 90px;
+  height: 26.8594px;
+  background: url("../images/logo.png") no-repeat center;
+  background-size: contain;
+}
+
+.header--scrolled .header__logo {
+  background: url("../images/logo_dark.svg") no-repeat center;
+  background-size: contain;
+}
+
+.gnb {
+  position: absolute;
+  right: 16px;
+  top: 0;
+  display: block;
+}
+
+.gnb-list {
+  display: flex;
+  padding: 32px 0;
+}
+
+.gnb-list > li {
+  display: block;
+  margin-left: 56px;
+}
+
+.gnb-list > li > a {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.2px;
+  color: #fff;
+}
+
+.header--scrolled .gnb-list > li > a {
+  font-weight: 400;
+  color: #20283b;
+}
+
+.gnb-list > li > a:hover {
+  text-decoration: underline;
+}
+
+/* Visual */
+.visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+
+.visual-area {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.visual-area-1 {
+  background-image: url("../images/visual_1.jpg");
+}
+
+.visual-area-2 {
+  background-image: url("../images/visual_2.jpg");
+}
+
+.visual-area-3 {
+  background-image: url("../images/visual_3.jpg");
+}
+
+.visual-area-4 {
+  background-image: url("../images/visual_4.jpg");
+}
+
+.visual-area-5 {
+  background-image: url("../images/visual_5.jpg");
+}
+
+.visual-area-6 {
+  background-image: url("../images/visual_6.jpg");
+}
+
+.sw-visual .container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.sw-visual a {
+  width: 536px;
+  height: 160px;
+}
+
+.sw-visual img {
+  margin-left: 15px;
+  transform: translateX(-50px);
+  opacity: 0;
+}
+
+.sw-visual .swiper-slide-active img {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.5s 0.5s ease-in;
+}
+
+.sw-visual__pg {
+  left: 50%;
+  top: 50%;
+  transform: translate(696px, calc(-50% + 7px));
+  width: 8px;
+}
+
+.sw-visual__pg .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #fff;
+  background: none;
+  margin-bottom: 10px;
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.sw-visual__pg .swiper-pagination-bullet:hover {
+  background: #fff;
+}
+
+.sw-visual__pg .swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+/* OUR STORY */
+.story {
+  position: relative;
+  display: block;
+}
+
+.story .container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+.story-box {
+  width: 720px;
+  height: 720px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.story-box-top {
+  position: absolute;
+  right: 0;
+  top: -140px;
+  display: flex;
+  align-items: center;
+  height: 140px;
+  background-color: #fff;
+  z-index: 999;
+}
+
+.story__tit {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #222;
+  margin-left: 99px;
+}
+
+.story-box-1 {
+  height: 580px;
+  background-color: #fff;
+}
+
+.story-box-2 {
+  background-image: url("../images/story_1.jpg");
+}
+
+.story-box-3 {
+  height: 936.578px;
+  background-image: url("../images/story_2.jpg");
+}
+
+.story-box-4 {
+  height: 936.578px;
+  background-image: url("../images/story_3.jpg");
+}
+
+.story-box-5 {
+  background-image: url("../images/story_4.jpg");
+}
+
+.story-box-6 {
+  background-image: url("../images/story_5.jpg");
+}
+
+.story-box-7 {
+  background-image: url("../images/story_6.jpg");
+}
+
+.story-box-8 {
+  height: 729px;
+}
+
+.story-box-up {
+  margin-top: -140px;
+}
+
+.story-box-bot {
+  height: 149px;
+  background-color: #d0d2d5;
+  margin-top: -149px;
+}
+
+/* Gallery */
+.gallery {
+  position: relative;
+  display: block;
+}
+
+/* Contact */
+.contact {
+  position: relative;
+  display: block;
+}
+
+/* Nexus Brands */
+.brand {
+  position: relative;
+  display: block;
+}
+
+/* Footer */
+.footer {
   position: relative;
   display: block;
 }
