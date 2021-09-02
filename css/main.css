@@ -1,5 +1,7 @@
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -22,8 +24,12 @@ ul {
   list-style: none;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
-  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-family: "Roboto", "Noto Sans KR", "Noto Sans", sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: normal;
@@ -72,8 +78,7 @@ body {
   position: fixed;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  animation-name: ani-header;
-  animation-duration: 0.5s;
+  animation: ani-header 0.5s;
 }
 
 @keyframes ani-header {
@@ -92,6 +97,7 @@ body {
   display: block;
   width: 90px;
   height: 26.8594px;
+  font-size: 0;
   background: url("../images/logo.png") no-repeat center;
   background-size: contain;
 }
@@ -199,6 +205,7 @@ body {
 }
 
 .sw-visual__pg {
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(696px, calc(-50% + 7px));
@@ -206,21 +213,48 @@ body {
 }
 
 .sw-visual__pg .swiper-pagination-bullet {
+  position: relative;
   width: 8px;
   height: 8px;
   border: 1px solid #fff;
-  background: none;
+  background-color: transparent;
   margin-bottom: 10px;
   opacity: 1;
+  overflow: hidden;
   transition: all 0.3s;
 }
 
 .sw-visual__pg .swiper-pagination-bullet:hover {
-  background: #fff;
+  background-color: #fff;
 }
 
-.sw-visual__pg .swiper-pagination-bullet-active {
-  background: #fff;
+.sw-visual__pg .swiper-pagination-bullet::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border-radius: 100%;
+}
+
+.sw-visual__pg .swiper-pagination-bullet-active::before {
+  top: -1px;
+}
+
+.sw-visual__pg--active::before {
+  animation: ani-bullet 1s;
+}
+
+@keyframes ani-bullet {
+  0% {
+    top: -1px;
+  }
+  100% {
+    top: 8px;
+  }
 }
 
 /* OUR STORY */
@@ -229,26 +263,12 @@ body {
   display: block;
 }
 
-.story .container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
-}
-
-.story-box {
-  width: 720px;
-  height: 720px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.story-box-top {
+.story-tit-box {
   position: absolute;
   right: 0;
   top: -140px;
-  display: flex;
-  align-items: center;
+  display: block;
+  width: 50%;
   height: 140px;
   background-color: #fff;
   z-index: 999;
@@ -258,14 +278,73 @@ body {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.4;
   letter-spacing: 1.2px;
   color: #222;
-  margin-left: 99px;
+  margin: 67px 0 0 98px;
+}
+
+.story .container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+.story-box {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  width: 720px;
+  height: 720px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .story-box-1 {
+  display: block;
   height: 580px;
-  background-color: #fff;
+  padding: 108px 0 0 98px;
+}
+
+.story-box-1 p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 44px;
+  letter-spacing: -1px;
+  color: #333;
+  margin-bottom: 140px;
+}
+
+.story-box__more {
+  display: inline-block;
+  width: 260px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 43px;
+  letter-spacing: 1.12px;
+  text-align: center;
+  border: 1px solid #222;
+  border-radius: 50px;
+  color: #222;
+  cursor: pointer;
+}
+
+.story-box__more:hover {
+  text-decoration: underline;
+}
+
+.story-box__more::after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url("../images/plus.svg") no-repeat center;
+  margin-left: 10px;
 }
 
 .story-box-2 {
@@ -295,39 +374,226 @@ body {
 }
 
 .story-box-8 {
+  display: block;
   height: 729px;
+  text-align: center;
+}
+
+.story-box-8 p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 44px;
+  letter-spacing: -1px;
+  text-align: center;
+  color: #222;
+  margin: 180px 0 40px 0;
+}
+
+.story-box-bot {
+  justify-content: center;
+  align-content: center;
+  height: 149px;
+  background-color: #d0d2d5;
+  margin-top: -149px !important;
 }
 
 .story-box-up {
   margin-top: -140px;
 }
 
-.story-box-bot {
-  height: 149px;
-  background-color: #d0d2d5;
-  margin-top: -149px;
+.story-box-link {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.story-box__tit {
+  width: 100%;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 5px;
+  text-align: center;
+  color: #fff;
+  padding-top: 100px;
+  z-index: 9;
+}
+
+.story-box-2 .story-box__tit {
+  color: #212529;
+  padding-top: 110px;
+}
+
+.story-box__brand {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 35px;
+  z-index: 9;
 }
 
 /* Gallery */
 .gallery {
   position: relative;
   display: block;
+  width: 100%;
+  height: 1438px;
+  background: url("../images/img_office.jpg") no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.gallery .container {
+  padding: 220px 0 0 16px;
+}
+
+.gallery__txt-1 {
+  display: block;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 1.44px;
+  color: #fff;
+  padding-bottom: 44px;
+}
+
+.gallery__txt-2 {
+  display: block;
+  font-family: "Roboto", sans-serif;
+  font-size: 44px;
+  font-weight: 100;
+  line-height: 1.3;
+  letter-spacing: 1.4px;
+  color: #fff;
 }
 
 /* Contact */
 .contact {
   position: relative;
   display: block;
+  width: 100%;
+  height: 338px;
+  background-color: #232c41;
+}
+
+.contact .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 120px 0 140px 16px;
+}
+
+.contact__txt {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.63;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact__txt:last-child {
+  padding-right: 97px;
 }
 
 /* Nexus Brands */
-.brand {
+.brands {
   position: relative;
   display: block;
+  width: 100%;
+  height: 1207px;
+  background-color: #212a3d;
+}
+
+.brands .container {
+  padding: 160px 16px 200px 16px;
+}
+
+.brands__tit {
+  font-size: 44px;
+  font-weight: 100;
+  line-height: 1.36;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 80px;
+}
+
+.brand-box-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.brand-box img {
+  width: 352px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  opacity: 0.5;
 }
 
 /* Footer */
 .footer {
   position: relative;
   display: block;
+  width: 100%;
+  height: 342px;
+  background-color: #20283b;
+}
+
+.footer-top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-top .container {
+  display: flex;
+  padding: 80px 0 80px 16px;
+}
+
+.footer__logo {
+  width: 42%;
+  height: 30.4375px;
+  font-size: 0;
+  background: url("../images/logo.svg") no-repeat left;
+  background-size: contain;
+}
+
+.footer__txt {
+  width: 29%;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.67;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bot {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-bot .container {
+  display: flex;
+  padding: 40px 0 40px 16px;
+}
+
+.footer__copy {
+  width: 42%;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__link {
+  width: 29%;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.footer__link .footer__link:hover {
+  text-decoration: underline;
 }
