@@ -1,7 +1,8 @@
 window.onload = function(){
+  AOS.init();
+
 	var bullets = $('.sw-visual__pg .swiper-pagination-bullet');
 
-  // Header Scroll
   $(window).scroll(function(){  
     var scY = $(window).scrollTop();
 
@@ -13,7 +14,6 @@ window.onload = function(){
     }
   });
 	
-  // Visual Slide
 	var sw_visual = new Swiper('.sw-visual', {
 		loop: true,
     effect: 'fade',
@@ -54,7 +54,6 @@ window.onload = function(){
 		});
 	});
 
-  // gnb in mobile
   var mb_menu = $('.mb-menu');
   var mb_gnb = $('.mb-gnb');
   mb_menu.click(function() {
